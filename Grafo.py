@@ -1,7 +1,7 @@
 class Grafo(object):
     adj = []
-    ordem = 0
-    tamanho = 0
+    ordem = None
+    tamanho = None
 
     def __init__(self, pN):
         self.inicializar(pN)
