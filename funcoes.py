@@ -57,3 +57,22 @@ def BFS(grafo, s):
                 fila.append(vertices[x])
         vertices[u.numVertice].cor = 2
     return vertices
+
+def run(grafo, entrada):
+    posicoes = entrada.split()
+    for i in range(len(posicoes)):
+        aux = posicoes[i]
+        posicoes[i] = coordParaVertice(ord(aux[0])-96, ord(aux[1])-48)
+
+    rei = posicoes[4]
+    distancias = []
+    for i in range(len(posicoes)-1):
+        bfsResultado = BFS(grafo, posicoes[i])
+        predecessorRei = bfsResultado[rei].predecessor
+        aux = bfsResultado[predecessorRei]
+        distancias.append(aux.distancia)
+
+    menor = min(distancias)
+    for i in range(distancias.count(menor)):
+        print(str(menor)+" ", end='')
+    print()
