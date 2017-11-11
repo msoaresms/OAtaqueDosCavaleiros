@@ -1,5 +1,6 @@
 from Grafo import Grafo
 from Vertice import Vertice
+import math
 
 def coordParaVertice(i, j):
     if i == 1:
@@ -40,7 +41,7 @@ def BFS(grafo, s):
     for i in range(0, grafo.ordem+1):
         vertices.append(Vertice(i, 0, float("inf"), -1))
     vertices[s].cor = 1
-    vertices[s].distacia = 0
+    vertices[s].distancia = 0
     vertices[s].predecessor = -1
 
     fila = []
@@ -51,7 +52,7 @@ def BFS(grafo, s):
         for x in uAdj:
             if vertices[x].cor == 0:
                 vertices[x].cor = 1
-                vertices[x].distacia = u.distacia+1
+                vertices[x].distancia = u.distancia+1
                 vertices[x].predecessor = u.numVertice
                 fila.append(vertices[x])
         vertices[u.numVertice].cor = 2
