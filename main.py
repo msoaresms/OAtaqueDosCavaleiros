@@ -4,4 +4,11 @@ grafo = Grafo(64)
 
 grafoCavalo(grafo)
 
-grafo.mostrar
+numEntradas = int(input())
+
+entradas = []
+for x in range(numEntradas):
+    entradas.append(input())
+
+for x in entradas:
+    run(grafo, x)
