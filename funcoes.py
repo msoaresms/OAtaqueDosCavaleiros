@@ -1,6 +1,5 @@
 from Grafo import Grafo
 from Vertice import Vertice
-import math
 
 def coordParaVertice(i, j):
     if i == 1:
