@@ -1,5 +1,5 @@
 from Grafo import Grafo
-##from Vertice import Vertice
+from Vertice import Vertice
 
 def coordParaVertice(i, j):
     if i == 1:
@@ -33,3 +33,26 @@ def grafoCavalo(grafo):
 
     else:
         print("A ORDEM DO GRAFO PRECISA SER IGUAL A 64")
+
+def BFS(grafo, s):
+    listaAdj = grafo.adj
+    vertices = []
+    for i in range(0, grafo.ordem+1):
+        vertices.append(Vertice(i, 0, float("inf"), -1))
+    vertices[s].cor = 1
+    vertices[s].distacia = 0
+    vertices[s].predecessor = -1
+
+    fila = []
+    fila.append(vertices[s])
+    while len(fila) != 0:
+        u = fila.pop(0)
+        uAdj = listaAdj[u.numVertice]
+        for x in uAdj:
+            if vertices[x].cor == 0:
+                vertices[x].cor = 1
+                vertices[x].distacia = u.distacia+1
+                vertices[x].predecessor = u.numVertice
+                fila.append(vertices[x])
+        vertices[u.numVertice].cor = 2
+    return vertices
